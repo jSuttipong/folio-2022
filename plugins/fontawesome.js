@@ -5,7 +5,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 /* import specific icons */
 // import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-import { faVuejs } from '@fortawesome/free-brands-svg-icons'
+import { faVuejs, faGithub, faGitlab, faNode, faNodeJs, faBootstrap,   } from '@fortawesome/free-brands-svg-icons'
 
 /* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
