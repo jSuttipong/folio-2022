@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <section ><HomeBanner /></section>
-      <section ><FolioSection /></section>
+      <section><HomeBanner /></section>
+      <section v-for="(value, index) in folioData" :key="index"><FolioSection :folioData="value" :folioNumber="index" /></section>
     </div>
   </div>
 </template>
@@ -20,9 +20,18 @@ export default {
       activeSection: 0,
       offsets: [],
       touchStartY: 0,
+      screenWidth: window.innerWidth,
+      folioData: []
     };
   },
+  created(){
+    this.folioData = require('../json/folio.json')
+  },
   mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
+
     this.calculateSectionOffsets();
 
     window.addEventListener("DOMMouseScroll", this.handleMouseWheelDOM); // Mozilla Firefox
@@ -32,8 +41,12 @@ export default {
 
     window.addEventListener("touchstart", this.touchStart, { passive: false }); // mobile devices
     window.addEventListener("touchmove", this.touchMove, { passive: false }); // mobile devices
+
+    // this.folioData = require('../json/folio.json')
+    // console.log('folioData length==>',this.folioData.length);
   },
   destroyed() {
+    window.removeEventListener('resize', this.onResize);
     window.removeEventListener("mousewheel", this.handleMouseWheel, {
       passive: false,
     }); // Other browsers
@@ -51,7 +64,6 @@ export default {
         let sectionOffset = sections[i].offsetTop;
         this.offsets.push(sectionOffset);
       }
-
     },
     handleMouseWheel: function (e) {
       if (e.wheelDelta < 30 && !this.inMove) {
@@ -84,7 +96,8 @@ export default {
       this.inMove = true;
       this.activeSection++;
 
-      if (this.activeSection > this.offsets.length - 1) this.activeSection = this.offsets.length - 1;
+      if (this.activeSection > this.offsets.length - 1)
+        this.activeSection = this.offsets.length - 1;
 
       this.scrollToSection(this.activeSection, true);
     },
@@ -94,7 +107,9 @@ export default {
       this.activeSection = id;
       this.inMove = true;
 
-      document.getElementsByTagName("section")[id].scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementsByTagName("section")
+        [id].scrollIntoView({ behavior: "smooth" });
 
       setTimeout(() => {
         this.inMove = false;
@@ -120,6 +135,9 @@ export default {
       this.touchStartY = 0;
       return false;
     },
+    onResize() {
+            this.screenWidth = window.innerWidth
+        }
   },
 };
 </script>

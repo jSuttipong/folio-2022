@@ -1,32 +1,49 @@
 <template>
-  <div class="home-banner d-flex align-items-center px-xl-5 px-lg-4 px-md-3 px-1">
-    <div class="home-content">
-      <div class="text-right font-weight-bold upper-font big-text">Jumbo <br> portfolio.</div>
-      <p>Suttipong Senasuttiphan</p>
-      <p>I'm WEB DEVELOPER</p>
+  <div
+  >
+  <div class="bg">
+    <div class="blur"></div>
+  </div>
+    <div class="home-banner d-flex align-items-center px-xl-5 px-lg-4 px-md-3 px-1">
+      <div class="home-content container-content">
+        <div class="text-right font-weight-bold upper-font big-text">
+          Jumbo <br />
+          portfolio.
+        </div>
+        <p>Suttipong Senasuttiphan</p>
+        <p>I'm WEB DEVELOPER</p>
+      </div>
     </div>
   </div>
 </template>
 <style>
 .home-banner {
-  background: #333;
+  /* background: #000; */
   width: 100vw;
   height: 100vh;
+  z-index: 2;
+  position: relative;
 }
-.home-content{
-    width: 100%;
-    color: white;
-    padding: 10vw;
+.home-content {
+  width: 100%;
+  color: white;
 }
-.big-text{
-    font-size: 8vh;
+.big-text {
+  font-size: 8vh;
 }
+.bg {
+  position: absolute;
 
-@media only screen and (max-width: 600px) {
-  .home-content{
-    padding: 0;
-  }
+  background: #000;
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.blur{
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  height: 100vh;
 }
 </style>
-
-
