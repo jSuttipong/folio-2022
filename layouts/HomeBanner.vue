@@ -34,7 +34,7 @@
 .bg {
   position: absolute;
 
-  background: #000;
+  /* background: #0b0b0b; */
   height: 100vh;
   width: 100vw;
   background-position: center;
@@ -42,8 +42,8 @@
   background-size: cover;
 }
 .blur{
-  background: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
-  height: 100vh;
+  height: 100vh; */
 }
 </style>

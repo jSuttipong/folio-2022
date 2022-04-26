@@ -2,7 +2,7 @@
   <div
     class="section-banner px-xl-5 px-lg-4 px-md-3 px-1 d-flex align-items-center"
   >
-    <div class="container-content">
+    <div class="container-content text-white">
       <b-row
         v-if="oddNumber"
         class="width-100 d-flex align-items-center none-margin"
@@ -10,7 +10,7 @@
       >
         <b-col class="text-md-right order-2 order-md-1 col-12 col-md-6">
           <h2>{{ folioName }}</h2>
-          <h5>{{ folioTech }}
+          <h5>{{ folioStack }}
             <!-- <img src="../assets/logo/vue.svg" alt="" style="fill: #000"> -->
           </h5>
           <p>{{ folioDescription }}</p>
@@ -21,8 +21,8 @@
           <div style="width: 100%">
             <carousel
               :per-page="1"
-              paginationColor="#fff"
-              paginationActiveColor="green"
+              paginationColor="#0b3251"
+              paginationActiveColor="#12d589"
               paginationPosition="bottom-overlay"
             >
               <slide v-for="(image, index) in folioImages" :key="index">
@@ -44,8 +44,8 @@
           <div style="width: 100%">
             <carousel
               :per-page="1"
-              paginationColor="#fff"
-              paginationActiveColor="green"
+              paginationColor="#0b3251"
+              paginationActiveColor="#12d589"
               paginationPosition="bottom-overlay"
             >
               <slide v-for="(image, index) in folioImages" :key="index">
@@ -58,7 +58,7 @@
         </b-col>
         <b-col class="text-left col-12 col-md-6">
           <h2>{{ folioName }}</h2>
-          <h5>{{ folioTech }}</h5>
+          <h5>{{ folioStack }}</h5>
           <p>{{ folioDescription }}</p>
         </b-col>
       </b-row>
@@ -73,7 +73,7 @@ export default {
       screenWidth: window.innerWidth,
       oddNumber: true,
       folioName: "",
-      folioTech: [],
+      folioStack: [],
       folioDescription: "",
       folioImages: [],
     };
@@ -85,7 +85,7 @@ export default {
     this.oddNumber = this.isOdd(this.folioNumber + 1);
 
     this.folioName = this.folioData.name;
-    this.folioTech = this.folioData.tech;
+    this.folioStack = this.sortStack(this.folioData.stack);
     this.folioDescription = this.folioData.des;
     this.folioImages = this.folioData.images;
 
@@ -103,6 +103,18 @@ export default {
       }
       return false;
     },
+    sortStack(stack){
+      let sort = ""
+      stack.forEach((element, index) => {
+        if(index == 0){
+          sort += element
+        }else{
+          sort += ", " + element
+        }
+        
+      });
+      return sort
+    }
   },
   // computed:{
 
@@ -111,7 +123,7 @@ export default {
 </script>
 <style>
 .section-banner {
-  background: #999;
+  /* background: #07090d; */
   width: 100vw;
   height: 50vh;
   /* min-height: 500px; */

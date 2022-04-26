@@ -1,10 +1,11 @@
 [
     {
         "name": "Cubhouse Website",
-        "tech": [
-            "vue",
-            "nuxt",
-            "boostrap"
+        "stack": [
+            "Nuxt",
+            "Boostrap",
+            "API",
+            "Fullpage"
         ],
         "images": [
             "cubhouse/1.png",
@@ -18,9 +19,9 @@
     },
     {
         "name": "KTB Event",
-        "tech": [
-            "react",
-            "nuxt"
+        "stack": [
+            "Nuxt",
+            "Boostrap"
         ],
         "images": [
             "ktb/1.png",
@@ -32,9 +33,12 @@
     },
     {
         "name": "SDGS Microsite",
-        "tech": [
-            "react",
-            "nuxt"
+        "stack": [
+            "Nuxt",
+            "Boostrap",
+            "API",
+            "Node",
+            "SQL"
         ],
         "images": [
             "sdgs/1.png",
@@ -48,9 +52,12 @@
     ,
     {
         "name": "APT Dashboard",
-        "tech": [
-            "react",
-            "nuxt"
+        "stack": [
+            "Vue",
+            "Boostrap",
+            "Apexchart",
+            "API",
+            "Google API"
         ],
         "images": [
             "apt/1.png",
@@ -65,9 +72,10 @@
     ,
     {
         "name": "IBank Module",
-        "tech": [
-            "react",
-            "nuxt"
+        "stack": [
+            "Vue",
+            "Boostrap",
+            "API"
         ],
         "images": [
             "ibank/1.png",
@@ -79,9 +87,10 @@
     ,
     {
         "name": "M Portal",
-        "tech": [
-            "react",
-            "nuxt"
+        "stack": [
+            "Nuxt",
+            "Boostrap",
+            "API"
         ],
         "images": [
             "mportal/1.png",

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="web-bg">
       <section><HomeBanner /></section>
       <section v-for="(value, index) in folioData" :key="index"><FolioSection :folioData="value" :folioNumber="index" /></section>
     </div>
@@ -141,3 +141,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.web-bg{
+  background: #07090d;
+}
+</style>
