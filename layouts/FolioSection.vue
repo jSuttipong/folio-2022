@@ -9,27 +9,38 @@
         style="height: 50vh"
       >
         <b-col class="text-md-right order-2 order-md-1 col-12 col-md-6">
-          <h2>{{ folioName }}</h2>
-          <h5>{{ folioStack }}
-            <!-- <img src="../assets/logo/vue.svg" alt="" style="fill: #000"> -->
-          </h5>
-          <p>{{ folioDescription }}</p>
+          <div class="des-container">
+            <h2>{{ folioName }}</h2>
+            <p>{{ folioDescription }}</p>
+            <h5>
+              {{ folioStack }}
+              <!-- <img src="../assets/logo/vue.svg" alt="" style="fill: #000"> -->
+            </h5>
+          </div>
         </b-col>
         <b-col
           class="d-flex justify-content-center order-1 order-md-2 col-12 col-md-6"
         >
-          <div style="width: 100%">
+          <div class="w-100">
             <carousel
               :per-page="1"
               paginationColor="#0b3251"
               paginationActiveColor="#12d589"
               paginationPosition="bottom-overlay"
             >
-              <slide v-for="(image, index) in folioImages" :key="index">
-                <div class="image-container">
-                  <img :src="require(`@/assets/images/${image}`)" class="image-folio"/>
+              <slide
+                v-for="(image, index) in folioImages"
+                :key="index"
+                :data-index="index"
+                :data-name="image"
+                @slideclick="handleSlideClick"
+              >
+                <div class="image-container image-border">
+                  <img
+                    :src="require(`@/assets/images/${image}`)"
+                    class="image-folio"
+                  />
                 </div>
-                
               </slide>
             </carousel>
           </div>
@@ -41,31 +52,43 @@
         style="height: 50vh"
       >
         <b-col class="d-flex justify-content-center col-12 col-md-6">
-          <div style="width: 100%">
+          <div class="w-100 image-border">
             <carousel
               :per-page="1"
               paginationColor="#0b3251"
               paginationActiveColor="#12d589"
               paginationPosition="bottom-overlay"
             >
-              <slide v-for="(image, index) in folioImages" :key="index">
+              <slide
+                v-for="(image, index) in folioImages"
+                :key="index"
+                :data-index="index"
+                :data-name="image"
+                @slideclick="handleSlideClick"
+              >
                 <div class="image-container">
-                  <img :src="require(`@/assets/images/${image}`)" class="image-folio"/>
+                  <img
+                    :src="require(`@/assets/images/${image}`)"
+                    class="image-folio"
+                  />
                 </div>
               </slide>
             </carousel>
           </div>
         </b-col>
         <b-col class="text-left col-12 col-md-6">
-          <h2>{{ folioName }}</h2>
-          <h5>{{ folioStack }}</h5>
-          <p>{{ folioDescription }}</p>
+          <div class="des-container">
+            <h2>{{ folioName }}</h2>
+            <p>{{ folioDescription }}</p>
+            <h5>{{ folioStack }}</h5>
+          </div>
         </b-col>
       </b-row>
     </div>
   </div>
 </template>
 <script>
+import {  mapGetters } from 'vuex'
 export default {
   props: ["folioData", "folioNumber"],
   data() {
@@ -88,10 +111,14 @@ export default {
     this.folioStack = this.sortStack(this.folioData.stack);
     this.folioDescription = this.folioData.des;
     this.folioImages = this.folioData.images;
-
   },
   destroyed() {
     window.removeEventListener("resize", this.onResize);
+  },
+  computed:{
+    ...mapGetters({
+      ModalActived: 'modal/isModalActived'
+    })
   },
   methods: {
     onResize() {
@@ -103,18 +130,27 @@ export default {
       }
       return false;
     },
-    sortStack(stack){
-      let sort = ""
+    sortStack(stack) {
+      let sort = "";
       stack.forEach((element, index) => {
-        if(index == 0){
-          sort += element
-        }else{
-          sort += ", " + element
+        if (index == 0) {
+          sort += element;
+        } else {
+          sort += ", " + element;
         }
-        
       });
-      return sort
-    }
+      return sort;
+    },
+    handleSlideClick(dataset) {
+      console.log(
+        "dataset.index, dataset.name =>",
+        dataset.index,
+        dataset.name
+      );
+      console.log(this.ModalActived);
+      this.$store.commit('modal/setModalShow', {value: true})
+      this.$store.commit('modal/setPageScroll', {value: false})
+    },
   },
   // computed:{
 
@@ -134,21 +170,36 @@ export default {
 .none-margin {
   margin: unset !important;
 }
-.VueCarousel-slide{
-  background: #000;
+.VueCarousel-slide {
+  background: #222;
 }
-.image-container{
+
+.VueCarousel-wrapper {
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 2px rgb(0, 0, 0);
+}
+
+.image-container {
   width: 100%;
   max-height: 32vh;
   background: #000;
 }
-.image-folio{
+.image-folio {
   width: 100%;
+}
+.image-border {
+  border-radius: 10px;
+}
+.des-container h2 {
+  color: #12d487;
 }
 
 @media only screen and (max-width: 600px) {
   .section-banner {
     height: 100vh;
+  }
+  .des-container {
+    margin-top: 20px;
   }
 }
 </style>

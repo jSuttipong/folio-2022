@@ -2,13 +2,20 @@
   <div>
     <div class="web-bg">
       <section><HomeBanner /></section>
-      <section v-for="(value, index) in folioData" :key="index"><FolioSection :folioData="value" :folioNumber="index" /></section>
+      <section v-for="(value, index) in folioData" :key="index">
+        <FolioSection :folioData="value" :folioNumber="index" />
+      </section>
+    </div>
+    <div class="image-modal" v-if="ModalActived.modal">
+      <div class="close-modal text-white" @click="closeModal"><h2>X</h2></div>
     </div>
   </div>
 </template>
 <script>
 import HomeBanner from "@/layouts/HomeBanner";
 import FolioSection from "@/layouts/FolioSection";
+
+import { mapGetters } from "vuex";
 export default {
   components: {
     HomeBanner,
@@ -21,11 +28,18 @@ export default {
       offsets: [],
       touchStartY: 0,
       screenWidth: window.innerWidth,
-      folioData: []
+      folioData: [],
     };
   },
-  created(){
-    this.folioData = require('../json/folio.json')
+  created() {
+    this.folioData = require("../json/folio.json");
+  },
+  watch: {
+    ModalActived() {
+      if (this.ModalActived.scroll) {
+        this.scrollEventActive()
+      }else this.scrollEventUnActive()
+    },
   },
   mounted() {
     this.$nextTick(() => {
@@ -33,29 +47,39 @@ export default {
     });
 
     this.calculateSectionOffsets();
-
-    window.addEventListener("DOMMouseScroll", this.handleMouseWheelDOM); // Mozilla Firefox
-    window.addEventListener("mousewheel", this.handleMouseWheel, {
-      passive: false,
-    }); // Other browsers
-
-    window.addEventListener("touchstart", this.touchStart, { passive: false }); // mobile devices
-    window.addEventListener("touchmove", this.touchMove, { passive: false }); // mobile devices
-
-    // this.folioData = require('../json/folio.json')
-    // console.log('folioData length==>',this.folioData.length);
+    this.imgModal = this.ModalActived.modal;
+    this.scrollEventActive()
   },
   destroyed() {
-    window.removeEventListener('resize', this.onResize);
-    window.removeEventListener("mousewheel", this.handleMouseWheel, {
-      passive: false,
-    }); // Other browsers
-    window.removeEventListener("DOMMouseScroll", this.handleMouseWheelDOM); // Mozilla Firefox
-
-    window.removeEventListener("touchstart", this.touchStart); // mobile devices
-    window.removeEventListener("touchmove", this.touchMove); // mobile devices
+    this.scrollEventUnActive();
+  },
+  computed: {
+    ...mapGetters({
+      ModalActived: "modal/isModalActived",
+    }),
   },
   methods: {
+    scrollEventActive() {
+      window.addEventListener("DOMMouseScroll", this.handleMouseWheelDOM); // Mozilla Firefox
+      window.addEventListener("mousewheel", this.handleMouseWheel, {
+        passive: false,
+      }); // Other browsers
+
+      window.addEventListener("touchstart", this.touchStart, {
+        passive: false,
+      }); // mobile devices
+      window.addEventListener("touchmove", this.touchMove, { passive: false }); // mobile devices
+    },
+    scrollEventUnActive() {
+      window.removeEventListener("resize", this.onResize);
+      window.removeEventListener("mousewheel", this.handleMouseWheel, {
+        passive: false,
+      }); // Other browsers
+      window.removeEventListener("DOMMouseScroll", this.handleMouseWheelDOM); // Mozilla Firefox
+
+      window.removeEventListener("touchstart", this.touchStart); // mobile devices
+      window.removeEventListener("touchmove", this.touchMove); // mobile devices
+    },
     calculateSectionOffsets() {
       let sections = document.getElementsByTagName("section");
       let length = sections.length;
@@ -136,14 +160,37 @@ export default {
       return false;
     },
     onResize() {
-            this.screenWidth = window.innerWidth
-        }
+      this.screenWidth = window.innerWidth;
+    },
+    closeModal() {
+      this.scrollEventActive()
+      this.$store.commit("modal/setModalShow", { value: false });
+      this.$store.commit("modal/setPageScroll", { value: true });
+    },
   },
 };
 </script>
 
 <style>
-.web-bg{
+.web-bg {
   background: #07090d;
+  position: absolute;
+}
+
+.image-modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: #12d487;
+  z-index: 20;
+  opacity: 0.6;
+}
+
+.close-modal {
+  width: 100%;
+  position: relative;
+  text-align: right;
+  padding: 15px 15px 0 0;
+  cursor: pointer;
 }
 </style>

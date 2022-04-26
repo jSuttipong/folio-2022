@@ -8,10 +8,12 @@
       <div class="home-content container-content">
         <div class="text-right font-weight-bold upper-font big-text">
           Jumbo <br />
-          portfolio.
+          <div style="color: #12d487">
+            portfolio.
+          </div>
         </div>
-        <p>Suttipong Senasuttiphan</p>
-        <p>I'm WEB DEVELOPER</p>
+        <h3>Suttipong Senasuttiphan</h3>
+        <p>WEB DEVELOPER</p>
       </div>
     </div>
   </div>
