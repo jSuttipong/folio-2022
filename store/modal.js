@@ -1,5 +1,5 @@
 export const state = () => ({
-  imageName: "",
+  imgData: "",
   pageScroll: true,
   showModal: false,
 });
@@ -15,6 +15,9 @@ export const mutations = {
   setPageScroll: (state, { value }) => {
     state.pageScroll = value;
   },
+  setImageModal: (state, { img }) => {
+    state.imgData = img;
+  },
 };
 
 export const getters = {
@@ -24,4 +27,7 @@ export const getters = {
         scroll: state.pageScroll
     };
   },
+  getImageModal: (state) => {
+    return state.imgData
+  }
 };

@@ -6,8 +6,12 @@
         <FolioSection :folioData="value" :folioNumber="index" />
       </section>
     </div>
-    <div class="image-modal" v-if="ModalActived.modal">
-      <div class="close-modal text-white" @click="closeModal"><h2>X</h2></div>
+    <div class="modal-container" v-if="ModalActived.modal">
+      <div class="bg-modal"></div>
+      <div class="close-modal" @click="closeModal"><h3><font-awesome-icon icon="fa-solid fa-circle-xmark" /></h3></div>
+      <div class="modal-img-container d-flex justify-content-center">
+        <img :src="imageModal" class="modal-img">
+      </div>
     </div>
   </div>
 </template>
@@ -56,6 +60,7 @@ export default {
   computed: {
     ...mapGetters({
       ModalActived: "modal/isModalActived",
+      imageModal: "modal/getImageModal"
     }),
   },
   methods: {
@@ -164,6 +169,7 @@ export default {
     },
     closeModal() {
       this.scrollEventActive()
+      this.$store.commit('modal/setImageModal', {img: ""})
       this.$store.commit("modal/setModalShow", { value: false });
       this.$store.commit("modal/setPageScroll", { value: true });
     },
@@ -177,20 +183,56 @@ export default {
   position: absolute;
 }
 
-.image-modal {
+.modal-container {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background: #12d487;
+  /* background: #12d487; */
   z-index: 20;
-  opacity: 0.6;
+  /* opacity: 0.6; */
+  overflow-y: auto;
 }
 
 .close-modal {
-  width: 100%;
-  position: relative;
+  /* width: 100px;
+  height: 100px; */
+  position: absolute;
   text-align: right;
-  padding: 15px 15px 0 0;
+  /* padding: 15px 15px 0 0; */
+  top: 15px;
+  right: 15px;
   cursor: pointer;
+  z-index: 22;
+  color: #12d487;
+}
+
+.bg-modal{
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  background: #000;
+  opacity: 0.9;
+}
+
+.modal-img-container{
+  position: relative;
+  z-index: 21;
+  height: 100%;
+  padding: 50px 0;
+}
+.modal-img{
+  height: 100%;
+  width: 50%;
+  object-fit: scale-down;
+}
+
+@media only screen and (max-width: 600px) {
+  .modal-img{
+    width: 100%;
+    height: auto;
+    object-fit: unest;
+    padding: 0 10px;
+}
 }
 </style>

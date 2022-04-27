@@ -1,19 +1,20 @@
 <template>
-  <div
-  >
-  <div class="bg">
-    <div class="blur"></div>
-  </div>
-    <div class="home-banner d-flex align-items-center px-xl-5 px-lg-4 px-md-3 px-1">
-      <div class="home-content container-content">
+  <div>
+    <div class="bg">
+      <div class="blur"></div>
+    </div>
+    <div
+      class="home-banner d-flex align-items-center px-xl-5 px-lg-4 px-md-3 px-1"
+    >
+      <div class="home-content container-content mx-3 mx-md-0">
         <div class="text-right font-weight-bold upper-font big-text">
           Jumbo <br />
-          <div style="color: #12d487">
-            portfolio.
-          </div>
+          <div style="color: #12d487; margin-top: -21px">portfolio.</div>
         </div>
-        <h3>Suttipong Senasuttiphan</h3>
-        <p>WEB DEVELOPER</p>
+        <div class="mt-4 mt-md-2">
+          <h3>Suttipong Senasuttiphan</h3>
+          <p>WEB DEVELOPER</p>
+        </div>
       </div>
     </div>
   </div>
@@ -43,7 +44,7 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-.blur{
+.blur {
   /* background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   height: 100vh; */

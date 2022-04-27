@@ -37,7 +37,7 @@
               >
                 <div class="image-container image-border">
                   <img
-                    :src="require(`@/assets/images/${image}`)"
+                    :src="getImageUrl(image)"
                     class="image-folio"
                   />
                 </div>
@@ -68,7 +68,7 @@
               >
                 <div class="image-container">
                   <img
-                    :src="require(`@/assets/images/${image}`)"
+                    :src="getImageUrl(image)"
                     class="image-folio"
                   />
                 </div>
@@ -141,13 +141,17 @@ export default {
       });
       return sort;
     },
+    getImageUrl(imgPath){
+      return require(`@/assets/images/${imgPath}`)
+    },
     handleSlideClick(dataset) {
       console.log(
         "dataset.index, dataset.name =>",
         dataset.index,
         dataset.name
       );
-      console.log(this.ModalActived);
+      // console.log(this.ModalActived);
+      this.$store.commit('modal/setImageModal', {img: require(`@/assets/images/${dataset.name}`)})
       this.$store.commit('modal/setModalShow', {value: true})
       this.$store.commit('modal/setPageScroll', {value: false})
     },
