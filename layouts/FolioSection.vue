@@ -145,12 +145,6 @@ export default {
       return require(`@/assets/images/${imgPath}`)
     },
     handleSlideClick(dataset) {
-      console.log(
-        "dataset.index, dataset.name =>",
-        dataset.index,
-        dataset.name
-      );
-      // console.log(this.ModalActived);
       this.$store.commit('modal/setImageModal', {img: require(`@/assets/images/${dataset.name}`)})
       this.$store.commit('modal/setModalShow', {value: true})
       this.$store.commit('modal/setPageScroll', {value: false})

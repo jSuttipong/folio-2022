@@ -71,7 +71,7 @@
     }
     ,
     {
-        "name": "IBank Module",
+        "name": "IBank Appointment Module",
         "stack": [
             "Vue",
             "Boostrap",
@@ -86,7 +86,7 @@
     }
     ,
     {
-        "name": "M Portal",
+        "name": "M Supplier Portal",
         "stack": [
             "Nuxt",
             "Boostrap",
