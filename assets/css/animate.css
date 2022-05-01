@@ -27,8 +27,6 @@
   animation: fadeIn 1s ease;
 }
 
-
-
 @media only screen and (min-width: 601px) {
   .fadeIn-left {
     transform: translateX(-100px);
@@ -37,13 +35,18 @@
     -o-transform: translateX(-100px);
     opacity: 0;
     transition: 1s all ease;
+    perspective: 1000;
+    /* -webkit-perspective: 1000;
+    -webkit-font-smoothing: subpixel-antialiased;
+    backface-visibility: hidden;
+    transform: translateZ(0); */
   }
-  
+
   .fadeIn-left.active {
     transform: translateX(0);
     opacity: 1;
   }
-  
+
   .fadeIn-right {
     transform: translateX(100px);
     -webkit-transform: translateX(100px);
@@ -51,8 +54,12 @@
     -o-transform: translateX(100px);
     opacity: 0;
     transition: 1s all ease;
+    /* -webkit-perspective: 1000;
+    -webkit-font-smoothing: subpixel-antialiased;
+    backface-visibility: hidden;
+    transform: translateZ(0); */
   }
-  
+
   .fadeIn-right.active {
     transform: translateX(0);
     -webkit-transform: translateX(0);
@@ -61,4 +68,3 @@
     opacity: 1;
   }
 }
-

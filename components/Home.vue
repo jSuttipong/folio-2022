@@ -206,6 +206,10 @@ export default {
   -moz-filter: blur(240px);
   -o-filter: blur(240px);
   -ms-filter: blur(240px);
+  -webkit-perspective: 1000;
+  -webkit-font-smoothing: subpixel-antialiased;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 .circle-2 {
   width: 40vh;
@@ -220,6 +224,10 @@ export default {
   -moz-filter: blur(240px);
   -o-filter: blur(240px);
   -ms-filter: blur(240px);
+  -webkit-perspective: 1000;
+  -webkit-font-smoothing: subpixel-antialiased;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .modal-container {
@@ -270,19 +278,19 @@ export default {
   }
   .circle-1 {
     left: -100px;
-     filter: blur(150px);
-  -webkit-filter: blur(150px);
-  -moz-filter: blur(150px);
-  -o-filter: blur(150px);
-  -ms-filter: blur(150px);
+    filter: blur(150px);
+    -webkit-filter: blur(150px);
+    -moz-filter: blur(150px);
+    -o-filter: blur(150px);
+    -ms-filter: blur(150px);
   }
   .circle-2 {
     right: -100px;
-     filter: blur(150px);
-  -webkit-filter: blur(150px);
-  -moz-filter: blur(150px);
-  -o-filter: blur(150px);
-  -ms-filter: blur(150px);
+    filter: blur(150px);
+    -webkit-filter: blur(150px);
+    -moz-filter: blur(150px);
+    -o-filter: blur(150px);
+    -ms-filter: blur(150px);
   }
 }
 </style>

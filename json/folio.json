@@ -4,7 +4,6 @@
         "stack": [
             "Nuxt",
             "Boostrap",
-            "API",
             "Fullpage"
         ],
         "images": [
@@ -36,7 +35,6 @@
         "stack": [
             "Nuxt",
             "Boostrap",
-            "API",
             "Node",
             "SQL"
         ],
@@ -56,7 +54,6 @@
             "Vue",
             "Boostrap",
             "Apexchart",
-            "API",
             "Google API"
         ],
         "images": [
@@ -74,8 +71,7 @@
         "name": "IBank Appointment Module",
         "stack": [
             "Vue",
-            "Boostrap",
-            "API"
+            "Boostrap"
         ],
         "images": [
             "ibank/1.png",
@@ -89,8 +85,7 @@
         "name": "M Supplier Portal",
         "stack": [
             "Nuxt",
-            "Boostrap",
-            "API"
+            "Boostrap"
         ],
         "images": [
             "mportal/1.png",
