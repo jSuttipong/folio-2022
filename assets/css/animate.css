@@ -1,0 +1,50 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@-o-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fadeIn{
+  from {
+    opacity: 0;
+  }
+}
+
+.fadeIn {
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
+  -o-animation: fadeIn 1s ease;
+  animation: fadeIn 1s ease;
+}
+
+.fadeIn-left {
+  transform: translateX(-100px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.fadeIn-left.active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.fadeIn-right {
+    transform: translateX(100px);
+    opacity: 0;
+    transition: 1s all ease;
+  }
+  
+  .fadeIn-right.active {
+    transform: translateX(0);
+    opacity: 1;
+  }

@@ -1,16 +1,22 @@
 <template>
   <div>
     <div class="web-bg">
-      <section><HomeBanner /></section>
+      <section ><HomeBanner /></section>
       <section v-for="(value, index) in folioData" :key="index">
         <FolioSection :folioData="value" :folioNumber="index" />
       </section>
     </div>
+    <div class="web-bg-pic" >
+      <div class="circle-1"></div>
+      <div class="circle-2"></div>
+    </div>
     <div class="modal-container" v-if="ModalActived.modal">
       <div class="bg-modal"></div>
-      <div class="close-modal" @click="closeModal"><h3><font-awesome-icon icon="fa-solid fa-circle-xmark" /></h3></div>
+      <div class="close-modal" @click="closeModal">
+        <h3><font-awesome-icon icon="fa-solid fa-circle-xmark" /></h3>
+      </div>
       <div class="modal-img-container d-flex justify-content-center">
-        <img :src="imageModal" class="modal-img">
+        <img :src="imageModal" class="modal-img" />
       </div>
     </div>
   </div>
@@ -41,8 +47,8 @@ export default {
   watch: {
     ModalActived() {
       if (this.ModalActived.scroll) {
-        this.scrollEventActive()
-      }else this.scrollEventUnActive()
+        this.scrollEventActive();
+      } else this.scrollEventUnActive();
     },
   },
   mounted() {
@@ -52,7 +58,7 @@ export default {
 
     this.calculateSectionOffsets();
     this.imgModal = this.ModalActived.modal;
-    this.scrollEventActive()
+    this.scrollEventActive();
   },
   destroyed() {
     this.scrollEventUnActive();
@@ -60,7 +66,7 @@ export default {
   computed: {
     ...mapGetters({
       ModalActived: "modal/isModalActived",
-      imageModal: "modal/getImageModal"
+      imageModal: "modal/getImageModal",
     }),
   },
   methods: {
@@ -146,7 +152,6 @@ export default {
     },
     touchStart(e) {
       e.preventDefault();
-
       this.touchStartY = e.touches[0].clientY;
     },
     touchMove(e) {
@@ -157,7 +162,7 @@ export default {
 
       if (this.touchStartY < currentY) {
         this.moveDown();
-      } else {
+      } else if (this.touchStartY > currentY) {
         this.moveUp();
       }
 
@@ -168,8 +173,8 @@ export default {
       this.screenWidth = window.innerWidth;
     },
     closeModal() {
-      this.scrollEventActive()
-      this.$store.commit('modal/setImageModal', {img: ""})
+      this.scrollEventActive();
+      this.$store.commit("modal/setImageModal", { img: "" });
       this.$store.commit("modal/setModalShow", { value: false });
       this.$store.commit("modal/setPageScroll", { value: true });
     },
@@ -183,22 +188,43 @@ export default {
   position: absolute;
 }
 
+.web-bg-pic{
+  width: 100vw;
+  height: 100vh;
+  /* background: #12d487; */
+  position: fixed;
+}
+.circle-1{
+  width: 50vh;
+  height: 50vh;
+  border-radius: 1000px;
+  background: #0097bb;
+  left: 300px;
+  position: absolute;
+  filter: blur(15rem);
+}
+.circle-2{
+  width: 40vh;
+  height: 40vh;
+  border-radius: 1000px;
+  background: #0eda93;
+  bottom: 50px;
+  right: 200px;
+  position: absolute;
+  filter: blur(15rem);
+}
+
 .modal-container {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  /* background: #12d487; */
   z-index: 20;
-  /* opacity: 0.6; */
   overflow-y: auto;
 }
 
 .close-modal {
-  /* width: 100px;
-  height: 100px; */
   position: absolute;
   text-align: right;
-  /* padding: 15px 15px 0 0; */
   top: 15px;
   right: 15px;
   cursor: pointer;
@@ -206,7 +232,7 @@ export default {
   color: #12d487;
 }
 
-.bg-modal{
+.bg-modal {
   position: absolute;
   width: 100%;
   min-height: 100%;
@@ -215,24 +241,32 @@ export default {
   opacity: 0.9;
 }
 
-.modal-img-container{
+.modal-img-container {
   position: relative;
   z-index: 21;
   height: 100%;
   padding: 50px 0;
 }
-.modal-img{
+.modal-img {
   height: 100%;
   width: 50%;
   object-fit: scale-down;
 }
 
 @media only screen and (max-width: 600px) {
-  .modal-img{
+  .modal-img {
     width: 100%;
     height: auto;
     object-fit: unest;
     padding: 0 10px;
+  }
+  .circle-1{
+  left: -100px;
+}
+.circle-2{
+
+  right: -100px;
+
 }
 }
 </style>

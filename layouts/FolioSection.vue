@@ -5,7 +5,7 @@
     <div class="container-content text-white">
       <b-row
         v-if="oddNumber"
-        class="width-100 d-flex align-items-center none-margin"
+        class="width-100 d-flex align-items-center none-margin fadeIn-left"
         style="height: 50vh"
       >
         <b-col class="text-md-right order-2 order-md-1 col-12 col-md-6">
@@ -36,10 +36,7 @@
                 @slideclick="handleSlideClick"
               >
                 <div class="image-container image-border">
-                  <img
-                    :src="getImageUrl(image)"
-                    class="image-folio"
-                  />
+                  <img :src="getImageUrl(image)" class="image-folio" />
                 </div>
               </slide>
             </carousel>
@@ -48,7 +45,7 @@
       </b-row>
       <b-row
         v-else
-        class="width-100 d-flex align-items-center none-margin"
+        class="width-100 d-flex align-items-center none-margin fadeIn-right"
         style="height: 50vh"
       >
         <b-col class="d-flex justify-content-center col-12 col-md-6">
@@ -67,10 +64,7 @@
                 @slideclick="handleSlideClick"
               >
                 <div class="image-container">
-                  <img
-                    :src="getImageUrl(image)"
-                    class="image-folio"
-                  />
+                  <img :src="getImageUrl(image)" class="image-folio" />
                 </div>
               </slide>
             </carousel>
@@ -88,7 +82,7 @@
   </div>
 </template>
 <script>
-import {  mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 export default {
   props: ["folioData", "folioNumber"],
   data() {
@@ -111,14 +105,16 @@ export default {
     this.folioStack = this.sortStack(this.folioData.stack);
     this.folioDescription = this.folioData.des;
     this.folioImages = this.folioData.images;
+    this.eventCheckAnimation(".fadeIn-left");
+    this.eventCheckAnimation(".fadeIn-right");
   },
   destroyed() {
     window.removeEventListener("resize", this.onResize);
   },
-  computed:{
+  computed: {
     ...mapGetters({
-      ModalActived: 'modal/isModalActived'
-    })
+      ModalActived: "modal/isModalActived",
+    }),
   },
   methods: {
     onResize() {
@@ -141,13 +137,66 @@ export default {
       });
       return sort;
     },
-    getImageUrl(imgPath){
-      return require(`@/assets/images/${imgPath}`)
+    getImageUrl(imgPath) {
+      return require(`@/assets/images/${imgPath}`);
     },
     handleSlideClick(dataset) {
-      this.$store.commit('modal/setImageModal', {img: require(`@/assets/images/${dataset.name}`)})
-      this.$store.commit('modal/setModalShow', {value: true})
-      this.$store.commit('modal/setPageScroll', {value: false})
+      this.$store.commit("modal/setImageModal", {
+        img: require(`@/assets/images/${dataset.name}`),
+      });
+      this.$store.commit("modal/setModalShow", { value: true });
+      this.$store.commit("modal/setPageScroll", { value: false });
+    },
+    eventCheckAnimation(classCss) {
+      let c = ''
+      if(classCss == '.fadeIn-left'){
+        c = this.fadeActiveLeft
+      }else{
+        c = this.fadeActiveRight
+      }
+      console.log(c);
+      window.addEventListener("scroll", c);
+      window.addEventListener("DOMMouseScroll", c); // Mozilla Firefox
+      window.addEventListener("mousewheel", c, {
+        passive: false,
+      }); // Other browsers
+
+      window.addEventListener("touchstart", c, {
+        passive: false,
+      }); // mobile devices
+      window.addEventListener("touchmove", c, { passive: false }); // mobile devices
+    },
+    fadeActiveLeft() {
+      var fadeQuery = document.querySelectorAll(".fadeIn-left");
+
+      for (var i = 0; i < fadeQuery.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = fadeQuery[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+          fadeQuery[i].classList.add("active");
+        }
+        // else {
+        //   fadeQuery[i].classList.remove("active");
+        // }
+      }
+    },
+    fadeActiveRight() {
+      var fadeQuery = document.querySelectorAll(".fadeIn-right");
+
+      for (var i = 0; i < fadeQuery.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = fadeQuery[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+          fadeQuery[i].classList.add("active");
+        }
+        // else {
+        //   fadeQuery[i].classList.remove("active");
+        // }
+      }
     },
   },
   // computed:{
@@ -160,6 +209,8 @@ export default {
   /* background: #07090d; */
   width: 100vw;
   height: 50vh;
+  z-index: 2;
+  position: relative;
   /* min-height: 500px; */
 }
 .width-100 {

@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <div class="bg">
+  <div class="fadeIn">
+    <!-- <div class="bg">
       <div class="blur"></div>
-    </div>
+    </div> -->
     <div
       class="home-banner d-flex align-items-center px-xl-5 px-lg-4 px-md-3 px-1"
     >
       <div class="home-content container-content mx-3 mx-md-0">
-        <div class="text-right font-weight-bold upper-font big-text">
+        <div class="text-right font-weight-bold upper-font big-text ">
           Jumbo <br />
           <div style="color: #12d487; margin-top: -21px">portfolio.</div>
         </div>
@@ -15,10 +15,9 @@
           <h3>Suttipong Senasuttiphan</h3>
           <p>WEB DEVELOPER</p>
         </div>
-
-        <div class="w-100 text-center text-md-left">
-          <h4 class="mt-4 mb-3">Resume</h4>
-          <div>
+        <!-- <div class="w-100 text-center text-md-left">
+          <h4 class="mt-4">Resume</h4>
+          <div class="mt-3">
             <b-button @click="downloadResume('th')" class="download-btn">
               TH
             </b-button>
@@ -26,14 +25,14 @@
               EN
             </b-button>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
-    <div class="mouse_scroll">
+    <div class="mouse-scroll">
         <div>
-          <span class="m_scroll_arrows unu"></span>
-          <span class="m_scroll_arrows doi"></span>
-          <span class="m_scroll_arrows trei"></span>
+          <span class="scroll-arrows s-st"></span>
+          <span class="scroll-arrows s-nd"></span>
+          <span class="scroll-arrows s-rd"></span>
         </div>
       </div>
   </div>
@@ -55,15 +54,12 @@ export default {
           img = require(`@/assets/resume/resume-en.png`);
           break;
       }
-
+      console.log('asdasdasdasdas');
       this.$store.commit("modal/setImageModal", { img: img });
       this.$store.commit("modal/setModalShow", { value: true });
       this.$store.commit("modal/setPageScroll", { value: false });
-      // let routeData = this.$router.resolve({
-      //   name: "routeName",
-      //   query: { data: "someData" },
-      // });
       // window.open(img, "_blank");
+      // window.location.assign(img, "_blank")
     },
   },
 };
@@ -117,6 +113,9 @@ export default {
 @media only screen and (max-width: 600px) {
   .home-content {
     margin-top: -60px;
+  }
+  .big-text{
+    font-size: 60px;
   }
 }
 </style>

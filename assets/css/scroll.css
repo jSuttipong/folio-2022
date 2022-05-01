@@ -1,8 +1,8 @@
-.mouse_scroll {
+.mouse-scroll {
 	display: block;
 	margin: 0 auto;
 	width: 24px;
-	height: 100px;
+	height: 77px;
     position: sticky;
     /* position: absolute; */
     bottom: 0;
@@ -10,7 +10,7 @@
 }
 
 
-.m_scroll_arrows
+.scroll-arrows
 {
   display: block;
   width: 5px;
@@ -28,12 +28,12 @@
 }
 
 
-.unu
+.s-st
 {
   margin-top: 1px;
 }
 
-.unu, .doi, .trei
+.s-st, .s-nd, .s-rd
 {
     -webkit-animation: mouse-scroll 1s infinite;
     -moz-animation: mouse-scroll 1s infinite;
@@ -41,7 +41,7 @@
   
 }
 
-.unu
+.s-st
 {
   -webkit-animation-delay: .1s;
   -moz-animation-delay: .1s;
@@ -51,7 +51,7 @@
   animation-delay: alternate;
 }
 
-.doi
+.s-nd
 {
   -webkit-animation-delay: .2s;
   -moz-animation-delay: .2s;
@@ -63,7 +63,7 @@
   margin-top: -6px;
 }
 
-.trei
+.s-rd
 {
   -webkit-animation-delay: .3s;
   -moz-animation-delay: .3s;
