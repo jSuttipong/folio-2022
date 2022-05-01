@@ -35,6 +35,7 @@
         "stack": [
             "Nuxt",
             "Boostrap",
+            "API",
             "Node",
             "SQL"
         ],
