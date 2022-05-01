@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="web-bg">
-      <section ><HomeBanner /></section>
+      <section><HomeBanner /></section>
       <section v-for="(value, index) in folioData" :key="index">
         <FolioSection :folioData="value" :folioNumber="index" />
       </section>
     </div>
-    <div class="web-bg-pic" >
+    <div class="web-bg-pic">
       <div class="circle-1"></div>
       <div class="circle-2"></div>
     </div>
@@ -188,22 +188,26 @@ export default {
   position: absolute;
 }
 
-.web-bg-pic{
+.web-bg-pic {
   width: 100vw;
   height: 100vh;
   /* background: #12d487; */
   position: fixed;
 }
-.circle-1{
+.circle-1 {
   width: 50vh;
   height: 50vh;
   border-radius: 1000px;
   background: #0097bb;
   left: 300px;
   position: absolute;
-  filter: blur(15rem);
+  filter: blur(240px);
+  -webkit-filter: blur(240px);
+  -moz-filter: blur(240px);
+  -o-filter: blur(240px);
+  -ms-filter: blur(240px);
 }
-.circle-2{
+.circle-2 {
   width: 40vh;
   height: 40vh;
   border-radius: 1000px;
@@ -211,7 +215,11 @@ export default {
   bottom: 50px;
   right: 200px;
   position: absolute;
-  filter: blur(15rem);
+  filter: blur(240px);
+  -webkit-filter: blur(240px);
+  -moz-filter: blur(240px);
+  -o-filter: blur(240px);
+  -ms-filter: blur(240px);
 }
 
 .modal-container {
@@ -256,17 +264,25 @@ export default {
 @media only screen and (max-width: 600px) {
   .modal-img {
     width: 100%;
-    height: auto;
-    object-fit: unest;
+    height: 80%;
+    /* object-fit: unset; */
     padding: 0 10px;
   }
-  .circle-1{
-  left: -100px;
-}
-.circle-2{
-
-  right: -100px;
-
-}
+  .circle-1 {
+    left: -100px;
+     filter: blur(150px);
+  -webkit-filter: blur(150px);
+  -moz-filter: blur(150px);
+  -o-filter: blur(150px);
+  -ms-filter: blur(150px);
+  }
+  .circle-2 {
+    right: -100px;
+     filter: blur(150px);
+  -webkit-filter: blur(150px);
+  -moz-filter: blur(150px);
+  -o-filter: blur(150px);
+  -ms-filter: blur(150px);
+  }
 }
 </style>

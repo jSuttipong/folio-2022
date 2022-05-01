@@ -1,8 +1,5 @@
 <template>
   <div class="fadeIn">
-    <!-- <div class="bg">
-      <div class="blur"></div>
-    </div> -->
     <div
       class="home-banner d-flex align-items-center px-xl-5 px-lg-4 px-md-3 px-1"
     >
@@ -54,7 +51,6 @@ export default {
           img = require(`@/assets/resume/resume-en.png`);
           break;
       }
-      console.log('asdasdasdasdas');
       this.$store.commit("modal/setImageModal", { img: img });
       this.$store.commit("modal/setModalShow", { value: true });
       this.$store.commit("modal/setPageScroll", { value: false });
@@ -88,11 +84,6 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-.blur {
-  /* background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  height: 100vh; */
 }
 .download-btn {
   background: transparent;

@@ -154,7 +154,6 @@ export default {
       }else{
         c = this.fadeActiveRight
       }
-      console.log(c);
       window.addEventListener("scroll", c);
       window.addEventListener("DOMMouseScroll", c); // Mozilla Firefox
       window.addEventListener("mousewheel", c, {
@@ -206,12 +205,10 @@ export default {
 </script>
 <style>
 .section-banner {
-  /* background: #07090d; */
   width: 100vw;
   height: 50vh;
   z-index: 2;
   position: relative;
-  /* min-height: 500px; */
 }
 .width-100 {
   width: 100%;
