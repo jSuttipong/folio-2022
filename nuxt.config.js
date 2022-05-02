@@ -12,13 +12,10 @@ export default {
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
+      { hid: "description", name: "description", content: "Suttipong" },
       { name: "format-detection", content: "telephone=no" },
-      {
-        hid: 'og:image',
-        property: 'og:image',
-        content: '/me.jpg',
-      },
+      { property:"og:title", content:"Portfolio-Jumbo"},
+      { property:"og:description", content:"Suttipong"},
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
