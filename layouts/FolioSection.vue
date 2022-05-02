@@ -148,11 +148,11 @@ export default {
       this.$store.commit("modal/setPageScroll", { value: false });
     },
     eventCheckAnimation(classCss) {
-      let c = ''
-      if(classCss == '.fadeIn-left'){
-        c = this.fadeActiveLeft
-      }else{
-        c = this.fadeActiveRight
+      let c = "";
+      if (classCss == ".fadeIn-left") {
+        c = this.fadeActiveLeft;
+      } else {
+        c = this.fadeActiveRight;
       }
       window.addEventListener("scroll", c);
       window.addEventListener("DOMMouseScroll", c); // Mozilla Firefox
