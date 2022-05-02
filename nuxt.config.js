@@ -15,9 +15,9 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
       {
-        hid: "og:image",
-        property: "og:image",
-        content: "/folio-2022/_nuxt/assets/images/me.jpg",
+        hid: 'og:image',
+        property: 'og:image',
+        content: '/me.jpg',
       },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
